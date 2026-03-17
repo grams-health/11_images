@@ -1,0 +1,2 @@
+ImagePath = str
+Prefix = str
