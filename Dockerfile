@@ -6,4 +6,4 @@ COPY 11_images/src/ src/
 COPY docker_entrypoint.py .
 EXPOSE 6031
 ENTRYPOINT ["python", "docker_entrypoint.py"]
-CMD ["python", "-m", "flask", "--app", "src.app.app", "run", "--host", "0.0.0.0", "--port", "6031", "--no-reload"]
+CMD ["gunicorn", "--bind", "0.0.0.0:6031", "--workers", "2", "--preload", "src.app.app:app"]
