@@ -1,5 +1,5 @@
 import pytest
-from .. import config
+from src.core.own.image import config
 
 
 @pytest.fixture(autouse=True)

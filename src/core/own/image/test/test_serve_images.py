@@ -2,8 +2,8 @@ import os
 from io import BytesIO
 from werkzeug.datastructures import FileStorage
 
-from .....core.typing.primitives import ImagePath, Prefix
-from .. import upload_image, serve_image
+from src.core.typing.primitives import ImagePath, Prefix
+from src.core.own.image import upload_image, serve_image
 
 
 def _make_file(filename="test.jpg", content=b"fake image data"):

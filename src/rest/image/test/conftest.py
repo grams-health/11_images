@@ -1,6 +1,6 @@
 import pytest
-from ....core.own.image import config
-from ....app.app import app
+from src.core.own.image import config
+from src.app.app import app
 
 
 @pytest.fixture(autouse=True)
