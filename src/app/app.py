@@ -1,8 +1,10 @@
 import os
 
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 from ..core.own.image import config
 os.makedirs(config.IMAGES_DIR, exist_ok=True)
