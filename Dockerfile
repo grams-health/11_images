@@ -7,8 +7,8 @@ COPY docker_entrypoint.py .
 RUN useradd --create-home appuser && chown -R appuser:appuser /app
 USER appuser
 EXPOSE 6031
-HEALTHCHECK --interval=10s --timeout=3s --retries=3 \
-    CMD python -c "import socket; s=socket.socket(); s.connect(('localhost',6031)); s.close()"
+HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:6031/health')"
 ENTRYPOINT ["python", "docker_entrypoint.py"]
 CMD ["gunicorn", "--bind", "0.0.0.0:6031", "--workers", "2", "--preload", "src.app.app:app"]
 

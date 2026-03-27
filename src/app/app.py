@@ -17,6 +17,7 @@ def health_check():
     return jsonify({"status": "healthy", "service": "images"})
 
 
+app.add_url_rule("/health", "health", lambda: (jsonify({"status": "ok"}), 200), methods=["GET"])
 app.add_url_rule("/images", "upload_image", handle_upload_image, methods=["POST"])
 app.add_url_rule("/images/<path:image_path>", "serve_image", handle_serve_image, methods=["GET"])
 app.add_url_rule("/images/<path:image_path>", "remove_image", handle_remove_image, methods=["DELETE"])
